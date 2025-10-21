@@ -5,10 +5,14 @@ using UnityEngine;
 public class RigidBodyMovement : MonoBehaviour
 {
     public Rigidbody rb;
-    public Vector3 InputKey;
+    private Vector3 InputKey;
     public float moveSpeed;
     public float rotationSpeed;
     public float jumpForce;
+
+    private Vector3 horizontalMove;
+    private Vector3 verticalMove;
+    public Transform cam;
 
     [Header("GroundDetection")]
     [SerializeField] private Transform groundCheck;
@@ -20,7 +24,12 @@ public class RigidBodyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
-        InputKey = new Vector3(Input.GetAxis("Horizontal") * -1, 0, Input.GetAxis("Vertical") * -1);
+        //InputKey = new Vector3(Input.GetAxis("Horizontal") * -1, 0, Input.GetAxis("Vertical") * -1);
+
+        horizontalMove = Input.GetAxis("Horizontal") * cam.transform.right;
+        verticalMove = Input.GetAxis("Vertical") * new Vector3(cam.transform.forward.x, 0f, cam.transform.forward.z);
+
+        InputKey = horizontalMove + verticalMove;
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, (int)ground);
 
