@@ -554,7 +554,7 @@ MonoBehaviour:
   rotationSpeed: 1
   jumpForce: 500
   groundCheck: {fileID: 1959984684}
-  groundRadius: 0.1
+  groundRadius: 0.3
   ground:
     serializedVersion: 2
     m_Bits: 64
