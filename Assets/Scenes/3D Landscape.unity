@@ -577,8 +577,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1271256510}
   InputKey: {x: 0, y: 0, z: 0}
-  moveSpeed: 20
+  moveSpeed: 30
   jumpForce: 500
+  rotationSpeed: 0.1
+  cam: {fileID: 963194228}
   groundCheck: {fileID: 1918103715}
   groundRadius: 0.5
   ground:
