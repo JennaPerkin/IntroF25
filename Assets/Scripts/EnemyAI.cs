@@ -35,6 +35,11 @@ public class EnemyAI : MonoBehaviour
     {
         if (!isWalkPointSet) SearchWalkPoint();
         else agent.SetDestination(walkPoint);
+
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+        if (distanceToWalkPoint.magnitude < 1f)
+            isWalkPointSet = false;
     }
 
     private void SearchWalkPoint()
@@ -43,10 +48,13 @@ public class EnemyAI : MonoBehaviour
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, isGround))
+            isWalkPointSet = true;
     }
 
     private void Chasing()
     {
-
+        agent.SetDestination(player.position);
     }
 }
