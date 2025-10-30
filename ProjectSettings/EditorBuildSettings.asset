@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/PrepScenes/Main Menu PREP.unity
+    guid: 1d2d9d080f52fe144bff198f818585d5
+  - enabled: 1
+    path: Assets/Scenes/PrepScenes/3D Landscape Prep.unity
+    guid: 8fd9e10ed8ca4be4885d653fe07eeb80
   m_configObjects: {}
