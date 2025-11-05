@@ -66,21 +66,21 @@ public class PREPProjectile : MonoBehaviour
         Rigidbody projectileRb = cube.GetComponent<Rigidbody>();
 
         //calculate direction
-        Vector3 forceDirection = cam.transform.forward;
+        Vector3 forceDirection = player.transform.forward;
 
-        RaycastHit hit;
+        /*RaycastHit hit;
 
-        if (Physics.Raycast(player.position, cam.forward, out hit, 500f))
+        if (Physics.Raycast(cam.position, cam.forward, out hit, 500f))
         {
             forceDirection = (hit.point - attackPoint.position).normalized;
-        }
+        }*/
 
         //shakingScript.ShakeCamera(shakeDuration, shakeIntensity);
         //audioSource.PlayOneShot(pop);
         //fire.Play();
 
         //force to add
-        Vector3 forceToAdd = forceDirection * shootForce + transform.up * shootUpwardForce;
+        Vector3 forceToAdd = player.forward * shootForce + transform.up * shootUpwardForce;
 
         projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
 
