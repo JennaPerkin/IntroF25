@@ -11,6 +11,7 @@ public class PREPProjectile : MonoBehaviour
     public Transform attackPoint;
     public GameObject shotObject;
     public Transform player;
+    public LayerMask includeField;
 
     //Limits
     [Header("Limits")]
@@ -68,19 +69,25 @@ public class PREPProjectile : MonoBehaviour
         //calculate direction
         Vector3 forceDirection = player.transform.forward;
 
-        /*RaycastHit hit;
+        RaycastHit hit;
 
-        if (Physics.Raycast(cam.position, cam.forward, out hit, 500f))
+        if (Physics.Raycast(player.position, player.forward, out hit, 500f, includeField))
         {
+            Debug.Log("Hit Something");
             forceDirection = (hit.point - attackPoint.position).normalized;
-        }*/
+        }
+        else 
+        {
+            Debug.Log("Hit Nothing");
+            forceDirection = player.forward;
+        }
 
         //shakingScript.ShakeCamera(shakeDuration, shakeIntensity);
         //audioSource.PlayOneShot(pop);
         //fire.Play();
 
         //force to add
-        Vector3 forceToAdd = player.forward * shootForce + transform.up * shootUpwardForce;
+        Vector3 forceToAdd = forceDirection * shootForce + transform.up * shootUpwardForce;
 
         projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
 

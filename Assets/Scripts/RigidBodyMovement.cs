@@ -33,7 +33,7 @@ public class RigidBodyMovement : MonoBehaviour
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, (int)ground);
 
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
 
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {

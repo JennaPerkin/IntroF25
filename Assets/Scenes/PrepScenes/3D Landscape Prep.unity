@@ -1545,7 +1545,9 @@ MonoBehaviour:
   attackPoint: {fileID: 1307627000}
   shotObject: {fileID: 5962530994501889643, guid: f086a8dd06e810546bc95906d313ce42, type: 3}
   player: {fileID: 1395296532}
-  playerBody: {fileID: 0}
+  includeField:
+    serializedVersion: 2
+    m_Bits: 119
   totalShots: 100
   shotCooldown: 1
   shootKey: 323
