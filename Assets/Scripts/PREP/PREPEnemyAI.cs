@@ -18,6 +18,9 @@ public class PREPEnemyAI : MonoBehaviour
     public float sightRange;
     public bool isPlayerInSightRange;
 
+    [Header("Values")]
+    public int health = 1;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -28,6 +31,11 @@ public class PREPEnemyAI : MonoBehaviour
 
         if (isPlayerInSightRange) Chasing();
         else Patroling();
+
+        if (health == 0)
+        {
+            Death();
+        }
     }
 
     private void Patroling()
@@ -56,5 +64,10 @@ public class PREPEnemyAI : MonoBehaviour
     private void Chasing()
     {
         agent.SetDestination(player.position);
+    }
+
+    private void Death()
+    {
+        Destroy(gameObject);
     }
 }

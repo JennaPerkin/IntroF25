@@ -70,11 +70,18 @@ public class PREPProjectile : MonoBehaviour
         Vector3 forceDirection = player.transform.forward;
 
         RaycastHit hit;
+        PREPEnemyAI enemyScript;
 
         if (Physics.Raycast(player.position, player.forward, out hit, 500f, includeField))
         {
             Debug.Log("Hit Something");
             forceDirection = (hit.point - attackPoint.position).normalized;
+
+            if (hit.transform.tag == "Enemy")
+            {
+                enemyScript = hit.transform.GetComponent<PREPEnemyAI>();
+                enemyScript.health--;
+            }
         }
         else 
         {
