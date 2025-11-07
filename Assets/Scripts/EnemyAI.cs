@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask isGround, isPlayer;
+    public int health;
 
     [Header("Patroling")]
     public Vector3 walkPoint;
@@ -29,6 +30,12 @@ public class EnemyAI : MonoBehaviour
 
         if (isPlayerInSightRange) Chasing();
         else Patroling();
+
+        if (health <= 0)
+        {
+            Debug.Log("Health Gone");
+            Destroy(gameObject);
+        }
     }
 
     private void Patroling()

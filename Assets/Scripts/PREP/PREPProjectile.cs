@@ -76,9 +76,9 @@ public class PREPProjectile : MonoBehaviour
         {
             Debug.Log("Hit Something");
             forceDirection = (hit.point - attackPoint.position).normalized;
-
             if (hit.transform.tag == "Enemy")
             {
+                Debug.Log("Enemy Hit");
                 enemyScript = hit.transform.GetComponent<PREPEnemyAI>();
                 enemyScript.health--;
             }
