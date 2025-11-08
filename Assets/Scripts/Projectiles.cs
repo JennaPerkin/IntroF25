@@ -51,10 +51,19 @@ public class Projectiles : MonoBehaviour
         Vector3 forceDirection = player.transform.forward;
 
         RaycastHit hit;
+        EnemyAI enemyScript;
+
         if (Physics.Raycast(player.position, player.forward, out hit, 500f, includeFields))
         {
             Debug.Log("Hit Something");
             forceDirection = (hit.point - attackPoint.position).normalized;
+
+            if (hit.transform.tag == "Enemy")
+            {
+                Debug.Log("Enemy Hit");
+                enemyScript = hit.transform.GetComponent<EnemyAI>();
+                enemyScript.health--;
+            }
         }
         else
         {
