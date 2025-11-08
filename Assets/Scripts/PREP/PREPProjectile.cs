@@ -90,7 +90,7 @@ public class PREPProjectile : MonoBehaviour
         }
 
         //shakingScript.ShakeCamera(shakeDuration, shakeIntensity);
-        //audioSource.PlayOneShot(pop);
+        audioSource.PlayOneShot(pop);
         //fire.Play();
 
         //force to add
