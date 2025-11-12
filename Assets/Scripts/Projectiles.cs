@@ -22,6 +22,10 @@ public class Projectiles : MonoBehaviour
     public float shootForce;
     public float shootUpwardForce;
     bool readyToShoot;
+
+    [Header("Sounds")]
+    public AudioSource src;
+    public AudioClip clip;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +49,9 @@ public class Projectiles : MonoBehaviour
     private void Shoot()
     {
         readyToShoot = false;
+
+        src.clip = clip;
+        src.Play();
 
         GameObject projectile = Instantiate(shotObject, attackPoint.position, cam.rotation);
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();

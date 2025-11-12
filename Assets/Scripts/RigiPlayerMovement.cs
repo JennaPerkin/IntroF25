@@ -24,6 +24,10 @@ public class RigiPlayerMovement : MonoBehaviour
     [Header("Collectables")]
     public int collectables;
 
+    [Header("Sounds")]
+    public AudioSource source;
+    public AudioClip collectable, jump;
+
     // Update is called once per frame
     void Update()
     {
@@ -60,6 +64,8 @@ public class RigiPlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Collectable")
         {
+            source.clip = collectable;
+            source.Play();
             Destroy(collision.gameObject);
             collectables++;
             Debug.Log(collectables);
