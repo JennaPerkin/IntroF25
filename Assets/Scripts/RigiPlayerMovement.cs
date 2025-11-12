@@ -21,6 +21,9 @@ public class RigiPlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask ground;
     [SerializeField] private bool isGrounded;
 
+    [Header("Collectables")]
+    public int collectables;
+
     // Update is called once per frame
     void Update()
     {
@@ -50,6 +53,16 @@ public class RigiPlayerMovement : MonoBehaviour
             float Angle = Mathf.Atan2(InputKey.x, InputKey.z) * Mathf.Rad2Deg;
             float Smooth = Mathf.SmoothDampAngle(transform.eulerAngles.y, Angle, ref rotationSpeed, 0.1f);
             transform.rotation = Quaternion.Euler(0, Smooth, 0);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Collectable")
+        {
+            Destroy(collision.gameObject);
+            collectables++;
+            Debug.Log(collectables);
         }
     }
 }
