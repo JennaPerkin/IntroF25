@@ -26,6 +26,12 @@ public class Projectiles : MonoBehaviour
     [Header("Sounds")]
     public AudioSource src;
     public AudioClip clip;
+
+    [Header("Camera Shake")]
+    public CameraShake shakingScript;
+    public float shakeDuration;
+    public float shakeIntensity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +56,8 @@ public class Projectiles : MonoBehaviour
     {
         readyToShoot = false;
 
+        //fire effects
+        shakingScript.ShakeCamera(shakeDuration, shakeIntensity);
         src.clip = clip;
         src.Play();
 
