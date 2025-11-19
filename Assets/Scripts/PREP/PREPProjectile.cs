@@ -33,7 +33,7 @@ public class PREPProjectile : MonoBehaviour
 
     //Cam Shake
     [Header("Cam Shake")]
-    //public CameraShake shakingScript;
+    public PREPShakingCam shakingScript;
     public float shakeDuration;
     public float shakeIntensity;
 
@@ -68,6 +68,8 @@ public class PREPProjectile : MonoBehaviour
 
         //calculate direction
         Vector3 forceDirection = player.transform.forward;
+
+        shakingScript.ShakeCamera(shakeDuration, shakeIntensity);
 
         RaycastHit hit;
         PREPEnemyAI enemyScript;

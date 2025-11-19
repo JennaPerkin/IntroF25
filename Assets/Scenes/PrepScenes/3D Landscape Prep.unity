@@ -929,6 +929,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1057,6 +1058,19 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 819c98ea35533d94ba9fe51dc7aa9ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shaking: 0
 --- !u!1 &1005492774
 GameObject:
   m_ObjectHideFlags: 3
@@ -1745,8 +1759,9 @@ MonoBehaviour:
   shootUpwardForce: 50
   audioSource: {fileID: 1395296536}
   pop: {fileID: 8300000, guid: 6470246da99831c41b64abb1d5dc0904, type: 3}
-  shakeDuration: 0
-  shakeIntensity: 0
+  shakingScript: {fileID: 963194231}
+  shakeDuration: 0.1
+  shakeIntensity: 0.5
 --- !u!82 &1395296536
 AudioSource:
   m_ObjectHideFlags: 0
