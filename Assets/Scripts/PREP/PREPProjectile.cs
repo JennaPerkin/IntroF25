@@ -31,6 +31,10 @@ public class PREPProjectile : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip pop;
 
+    [Header("Animation")]
+    public Animation anim;
+    public AnimationClip shoot;
+
     //Cam Shake
     [Header("Cam Shake")]
     public PREPShakingCam shakingScript;
@@ -45,6 +49,7 @@ public class PREPProjectile : MonoBehaviour
     {
         readyToShoot = true;
         fire = GetComponent<ParticleSystem>();
+        anim = GetComponent<Animation>();
     }
 
     // Update is called once per frame
@@ -70,6 +75,7 @@ public class PREPProjectile : MonoBehaviour
         Vector3 forceDirection = player.transform.forward;
 
         shakingScript.ShakeCamera(shakeDuration, shakeIntensity);
+        anim.Play("Firing");
 
         RaycastHit hit;
         PREPEnemyAI enemyScript;
