@@ -42,13 +42,13 @@ public class PREPProjectile : MonoBehaviour
     public float shakeIntensity;
 
     [Header("Particles")]
-    ParticleSystem fire;
+    public ParticleSystem fire;
 
     // Start is called before the first frame update
     void Start()
     {
         readyToShoot = true;
-        fire = GetComponent<ParticleSystem>();
+        //fire = GetComponent<ParticleSystem>();
         anim = GetComponent<Animation>();
     }
 
@@ -65,6 +65,9 @@ public class PREPProjectile : MonoBehaviour
     {
         readyToShoot = false;
 
+        shakingScript.ShakeCamera(shakeDuration, shakeIntensity);
+        anim.Play("Firing");
+        fire.Play();
         //spawn object
         GameObject cube = Instantiate(shotObject, attackPoint.position, cam.rotation);
 
@@ -73,9 +76,6 @@ public class PREPProjectile : MonoBehaviour
 
         //calculate direction
         Vector3 forceDirection = player.transform.forward;
-
-        shakingScript.ShakeCamera(shakeDuration, shakeIntensity);
-        anim.Play("Firing");
 
         RaycastHit hit;
         PREPEnemyAI enemyScript;
@@ -99,7 +99,6 @@ public class PREPProjectile : MonoBehaviour
 
         //shakingScript.ShakeCamera(shakeDuration, shakeIntensity);
         audioSource.PlayOneShot(pop);
-        //fire.Play();
 
         //force to add
         Vector3 forceToAdd = forceDirection * shootForce + transform.up * shootUpwardForce;
