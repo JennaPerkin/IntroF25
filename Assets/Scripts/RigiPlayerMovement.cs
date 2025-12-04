@@ -28,6 +28,9 @@ public class RigiPlayerMovement : MonoBehaviour
     public AudioSource source;
     public AudioClip collectable, jump;
 
+    [Header("Animation")]
+    [SerializeField] private Animator animator;
+
     // Update is called once per frame
     void Update()
     {
@@ -44,6 +47,11 @@ public class RigiPlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(0, jumpForce, 0);
+            animator.SetBool("isJumping", true);
+        }
+        else
+        {
+            animator.SetBool("isJumping", false);
         }
     }
 
@@ -57,6 +65,11 @@ public class RigiPlayerMovement : MonoBehaviour
             float Angle = Mathf.Atan2(InputKey.x, InputKey.z) * Mathf.Rad2Deg;
             float Smooth = Mathf.SmoothDampAngle(transform.eulerAngles.y, Angle, ref rotationSpeed, 0.1f);
             transform.rotation = Quaternion.Euler(0, Smooth, 0);
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
         }
     }
 
