@@ -31,6 +31,7 @@ public class Projectiles : MonoBehaviour
     public CameraShake shakingScript;
     public float shakeDuration;
     public float shakeIntensity;
+    public ParticleSystem line;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +61,7 @@ public class Projectiles : MonoBehaviour
         shakingScript.ShakeCamera(shakeDuration, shakeIntensity);
         src.clip = clip;
         src.Play();
+        line.Play();
 
         GameObject projectile = Instantiate(shotObject, attackPoint.position, cam.rotation);
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
