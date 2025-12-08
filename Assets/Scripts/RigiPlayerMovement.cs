@@ -65,11 +65,11 @@ public class RigiPlayerMovement : MonoBehaviour
             float Angle = Mathf.Atan2(InputKey.x, InputKey.z) * Mathf.Rad2Deg;
             float Smooth = Mathf.SmoothDampAngle(transform.eulerAngles.y, Angle, ref rotationSpeed, 0.1f);
             transform.rotation = Quaternion.Euler(0, Smooth, 0);
-            animator.SetBool("isMoving", true);
+            animator.SetBool("isWalking", true);
         }
         else
         {
-            animator.SetBool("isMoving", false);
+            animator.SetBool("isWalking", false);
         }
     }
 
