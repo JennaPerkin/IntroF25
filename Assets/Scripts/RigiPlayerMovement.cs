@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RigiPlayerMovement : MonoBehaviour
@@ -9,6 +10,8 @@ public class RigiPlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
     public float rotationSpeed;
+    public Transform player;
+    public bool isPlayerVisible;
 
     [Header("CameraPosition Rotation Values")]
     private Vector3 horizontalMove;
@@ -20,6 +23,7 @@ public class RigiPlayerMovement : MonoBehaviour
     [SerializeField] float groundRadius;
     [SerializeField] private LayerMask ground;
     [SerializeField] private bool isGrounded;
+    [SerializeField] private bool doubleJump = false;
 
     [Header("Collectables")]
     public int collectables;
@@ -48,10 +52,28 @@ public class RigiPlayerMovement : MonoBehaviour
         {
             rb.AddForce(0, jumpForce, 0);
             animator.SetBool("isJumping", true);
+            doubleJump = true;
         }
+        else if(Input.GetKeyDown(KeyCode.Space) && doubleJump && !isGrounded)
+        {
+            Debug.Log("boost");
+            rb.AddForce(player.transform.forward.x * 500, 0f, player.transform.forward.z * 500);
+            doubleJump = false;
+        }
+
         else
         {
             animator.SetBool("isJumping", false);
+        }
+
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            Debug.Log("hidden");
+            isPlayerVisible = false;
+        }
+        else
+        {
+            isPlayerVisible = true;
         }
     }
 

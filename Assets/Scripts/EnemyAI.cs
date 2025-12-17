@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
     public LayerMask isGround, isPlayer;
     public int health;
+    public RigiPlayerMovement playerScript;
 
     [Header("Patroling")]
     public Vector3 walkPoint;
@@ -62,6 +63,13 @@ public class EnemyAI : MonoBehaviour
 
     private void Chasing()
     {
-        agent.SetDestination(player.position);
+        if (playerScript.isPlayerVisible == true)
+        {
+            agent.SetDestination(player.position);
+        }
+        else
+        {
+            Patroling();
+        }
     }
 }

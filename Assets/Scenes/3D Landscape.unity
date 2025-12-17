@@ -1533,6 +1533,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5231023361321142163, guid: 99b91ed3a83050b4ea3a48a8805147cd, type: 3}
+      propertyPath: playerScript
+      value: 
+      objectReference: {fileID: 1271256511}
+    - target: {fileID: 5231023361321142163, guid: 99b91ed3a83050b4ea3a48a8805147cd, type: 3}
       propertyPath: walkPointRange
       value: 10
       objectReference: {fileID: 0}
@@ -6950,6 +6954,8 @@ MonoBehaviour:
   moveSpeed: 20
   jumpForce: 500
   rotationSpeed: 0.1
+  player: {fileID: 1271256509}
+  isPlayerVisible: 0
   cam: {fileID: 963194228}
   groundCheck: {fileID: 1918103715}
   groundRadius: 0.5
@@ -6957,6 +6963,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
+  doubleJump: 0
   collectables: 0
   source: {fileID: 1271256512}
   collectable: {fileID: 8300000, guid: 655d1fb81a1641e4ca0688227fbdfbf5, type: 3}
@@ -7651,6 +7658,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5231023361321142163, guid: 99b91ed3a83050b4ea3a48a8805147cd, type: 3}
+      propertyPath: playerScript
+      value: 
+      objectReference: {fileID: 1271256511}
+    - target: {fileID: 5231023361321142163, guid: 99b91ed3a83050b4ea3a48a8805147cd, type: 3}
       propertyPath: walkPointRange
       value: 0
       objectReference: {fileID: 0}
@@ -7970,7 +7981,7 @@ Transform:
   m_GameObject: {fileID: 1792024101}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.011548758, z: 0.0020022392}
+  m_LocalPosition: {x: 0, y: -0.011548758, z: -0.026393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8770,6 +8781,10 @@ PrefabInstance:
       propertyPath: sightRange
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5231023361321142163, guid: 99b91ed3a83050b4ea3a48a8805147cd, type: 3}
+      propertyPath: playerScript
+      value: 
+      objectReference: {fileID: 1271256511}
     - target: {fileID: 5231023361321142163, guid: 99b91ed3a83050b4ea3a48a8805147cd, type: 3}
       propertyPath: walkPointRange
       value: 5
