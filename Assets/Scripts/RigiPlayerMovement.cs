@@ -48,7 +48,7 @@ public class RigiPlayerMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, (int)ground);
 
         //Checking Jump Key and Jumping
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if(Input.GetKeyDown(KeyCode.Space) && isGrounded && isPlayerVisible)
         {
             rb.AddForce(0, jumpForce, 0);
             animator.SetBool("isJumping", true);
@@ -70,17 +70,23 @@ public class RigiPlayerMovement : MonoBehaviour
         {
             Debug.Log("hidden");
             isPlayerVisible = false;
+            animator.SetBool("isHidden", true);
         }
         else
         {
             isPlayerVisible = true;
+            animator.SetBool("isHidden", false);
         }
     }
 
     void FixedUpdate()
     {
         //Moving Player Based on Assigned Axis and Defined Speed
-        rb.AddForce(InputKey * moveSpeed);
+        if (isPlayerVisible == true)
+        {
+            rb.AddForce(InputKey * moveSpeed);
+        }
+        else rb.AddForce(InputKey * (moveSpeed / 2));
 
         if (InputKey.magnitude > 0.1f)
         {
