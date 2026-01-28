@@ -101,14 +101,15 @@ public class RigiPlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Collectable")
         {
+            collectables++;
+
+            Destroy(collision.gameObject);
             source.clip = collectable;
             source.Play();
-            Destroy(collision.gameObject);
-            collectables++;
             Debug.Log(collectables);
         }
     }

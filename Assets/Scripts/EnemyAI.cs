@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
+    public GameObject playerObj;
     public LayerMask isGround, isPlayer;
     public int health;
     public RigiPlayerMovement playerScript;
@@ -70,6 +71,14 @@ public class EnemyAI : MonoBehaviour
         else
         {
             Patroling();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject == playerObj)
+        {
+            playerObj.transform.position = new Vector3(1.231784f, 1.78f, -3.14f);
         }
     }
 }
